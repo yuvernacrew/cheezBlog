@@ -1,3 +1,5 @@
+import ctfconfig from './.contentful.json'
+
 export default {
   mode: 'universal',
   /*
@@ -11,10 +13,10 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
-      }
+        content: process.env.npm_package_description || '',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   /*
    ** Customize the progress-bar color
@@ -35,7 +37,7 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/stylelint-module
-    '@nuxtjs/stylelint-module'
+    '@nuxtjs/stylelint-module',
   ],
   /*
    ** Nuxt.js modules
@@ -44,7 +46,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
   ],
   /*
    ** Axios module configuration
@@ -58,6 +60,12 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
-  }
+    extend(config, ctx) {},
+  },
+  env: {
+    CTF_SPACE_ID: ctfconfig.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: ctfconfig.CTF_CDA_ACCESS_TOKEN,
+    CTF_PERSON_ID: ctfconfig.CTF_PERSON_ID,
+    CTF_BLOG_POST_TYPE_ID: ctfconfig.CTF_BLOG_POST_TYPE_ID,
+  },
 }
