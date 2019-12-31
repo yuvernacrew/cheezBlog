@@ -19,7 +19,6 @@ import { createClient } from '~/plugins/contentful.js'
 const client = createClient()
 
 export default {
-  // `env` is available in the context object
   asyncData({ env }) {
     return Promise.all([
       // fetch the owner of the blog
