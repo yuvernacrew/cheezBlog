@@ -23,7 +23,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [{ src: 'node_modules/highlightjs/styles/vs2015.css', lang: 'css' }],
   /*
    ** Plugins to load before mounting the App
    */
