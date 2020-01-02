@@ -1,17 +1,17 @@
 <template>
-  <div class="c-article">
-    <h1>{{ post.fields.title }}</h1>
-    <div v-html="markedHtml"></div>
+  <div class="l-main--left">
+    <div class="c-article">
+      <h1>{{ post.fields.title }}</h1>
+      <div v-html="markedHtml"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import marked from 'marked'
-import hljs from 'highlightjs'
-import hljsDefineVue from 'highlightjs-vue'
-import { createClient } from '~/plugins/contentful.js'
+import createClient from '~/plugins/contentful.js'
+import marked from '~/plugins/marked.js'
 
-const client = createClient()
+const client = createClient
 
 export default {
   computed: {
@@ -19,38 +19,19 @@ export default {
       return marked(this.post.fields.items)
     },
   },
-  asyncData({ env, params }) {
-    return Promise.all([
-      client.getEntries({
-        'sys.id': env.CTF_PERSON_ID,
-      }),
-      client.getEntry(params.id),
-    ]).then(([entries, post]) => {
+  asyncData(params) {
+    return new Promise((resolve) => {
+      resolve(client.getEntry(params.id))
+    }).then((post) => {
       return {
-        person: entries,
         post,
       }
-    })
-  },
-  created() {
-    // markedでhighlightjsを利用するように設定
-    hljsDefineVue(hljs)
-    marked.setOptions({
-      langPrefix: 'hljs ',
-      highlight(code, lang) {
-        // .value で ハイライトされたHTML文字列 を返す。
-        return hljs.highlightAuto(code, [lang]).value
-      },
     })
   },
 }
 </script>
 
 <style lang="scss" scope>
-// primary #ddc96c
-// accent #ea4b60
-// primary-light #fffcef
-// gray #f5f5f5
 .c-article {
   h1 {
     position: relative;
@@ -73,15 +54,16 @@ export default {
       height: 6px;
       border-radius: 5px;
       background-size: 6px 6px;
+      background-repeat: repeat-x;
       background-image: linear-gradient(
         -45deg,
         transparent 25%,
-        #ddc96c 25%,
-        #ddc96c 50%,
+        $primary-color 25%,
+        $primary-color 50%,
         transparent 50%,
         transparent 75%,
-        #ddc96c 75%,
-        #ddc96c
+        $primary-color 75%,
+        $primary-color
       );
     }
   }

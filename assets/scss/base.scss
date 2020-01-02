@@ -1,0 +1,14 @@
+body {
+  // TODO: 変数に変更
+  background-color: #fcfcfc;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
