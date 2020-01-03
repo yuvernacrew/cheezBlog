@@ -6,6 +6,7 @@
 <style lang="scss" scoped>
 .c-footer {
   width: 100vw;
+  margin-top: 40px;
   padding: 15px 0;
   background-color: $mono-darker-color;
   color: #fff;
