@@ -1,20 +1,20 @@
 <template>
   <div class="wrapper">
-    <Header></Header>
+    <headerMain></headerMain>
     <main class="l-main">
       <nuxt />
     </main>
-    <Footer></Footer>
+    <footerMain></footerMain>
   </div>
 </template>
 <script>
-import Header from '~/components/Template/Header.vue';
-import Footer from '~/components/Template/Footer.vue';
+import HeaderMain from '~/components/Template/HeaderMain.vue';
+import FooterMain from '~/components/Template/FooterMain.vue';
 
 export default {
   components: {
-    Header,
-    Footer,
+    HeaderMain,
+    FooterMain,
   },
 };
 </script>

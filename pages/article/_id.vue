@@ -2,24 +2,24 @@
   <div class="l-main--2columns">
     <div class="l-main--left">
       <div class="c-card">
-        <Article :article="article"></Article>
+        <articleIndex :article="article"></articleIndex>
       </div>
     </div>
-    <Aside></Aside>
+    <asideNav></asideNav>
   </div>
 </template>
 
 <script>
 import createClient from '~/plugins/contentful.js';
-import Article from '~/components/Organisms/Article.vue';
-import Aside from '~/components/Template/Aside.vue';
+import ArticleIndex from '~/components/Organisms/ArticleIndex.vue';
+import AsideNav from '~/components/Template/AsideNav.vue';
 
 const client = createClient;
 
 export default {
   components: {
-    Article,
-    Aside,
+    ArticleIndex,
+    AsideNav,
   },
   async asyncData({ params: { id } }) {
     return {
