@@ -3,9 +3,9 @@
     <ArticleTitle :title="article.fields.title"></ArticleTitle>
     <img v-if="mainVisual" :src="imageUrl" />
     <ArticleItem :content="article.fields.content"></ArticleItem>
-    <p>作成日 : {{ article.sys.createdAt }}</p>
+    <!-- <p>作成日 : {{ article.sys.createdAt }}</p>
     <p>更新日 : {{ article.sys.updatedAt }}</p>
-    <p>タグ：{{ article.tags }}</p>
+    <p>タグ：{{ article.tags }}</p> -->
   </article>
 </template>
 

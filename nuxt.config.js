@@ -48,13 +48,14 @@ export default {
     // Doc: https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources',
     'nuxt-webfontloader',
+    'nuxt-fontawesome',
   ],
   styleResources: {
     scss: ['assets/scss/*.scss', 'assets/scss/**/*.scss'],
   },
   webfontloader: {
     google: {
-      families: ['Noto+Sans+JP'],
+      families: ['Noto+Sans+JP', 'Signika'],
     },
   },
   /*
@@ -70,6 +71,18 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
+  },
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas'],
+      },
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['fab'],
+      },
+    ],
   },
   env: {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,

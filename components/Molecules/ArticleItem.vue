@@ -31,6 +31,7 @@ export default {
     margin: 40px 0 20px;
     font-size: 20px;
     font-weight: bold;
+    line-height: 1.4;
     background-color: $primary-light-color;
     border-radius: 4px;
   }
@@ -40,6 +41,7 @@ export default {
     margin: 32px 0 16px;
     font-size: 16px;
     font-weight: bold;
+    line-height: 1.4;
     border-bottom: 1px solid $mono-color;
     border-left: 8px solid $primary-color;
   }
@@ -101,8 +103,22 @@ export default {
   }
 
   code {
+    &:not(.hljs) {
+      display: inline-block;
+      padding: 2px;
+      font-size: 14px;
+      line-height: 1.4;
+      background-color: $mono-light-color;
+      border-radius: 4px;
+    }
+  }
+
+  pre {
+    display: block;
+    width: 100%;
     margin-bottom: 12px;
     font-size: 14px;
+    line-height: 1.4;
   }
 }
 </style>

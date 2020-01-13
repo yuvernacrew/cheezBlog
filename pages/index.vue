@@ -1,20 +1,25 @@
 <template>
-  <div class="l-main--left">
-    <div class="c-card">
-      <articleList :articles="articles.items"></articleList>
+  <div class="l-main--2columns">
+    <div class="l-main--left">
+      <div class="c-card">
+        <articleList :articles="articles.items"></articleList>
+      </div>
     </div>
+    <asideNav></asideNav>
   </div>
 </template>
 
 <script>
 import createClient from '@/plugins/contentful.js';
 import ArticleList from '~/components/Organisms/ArticleList.vue';
+import AsideNav from '~/components/Template/AsideNav.vue';
 
 const client = createClient;
 
 export default {
   components: {
     ArticleList,
+    AsideNav,
   },
   async asyncData({ env, query: { categoryId, tagId } }) {
     const articlesSearchConfig = {

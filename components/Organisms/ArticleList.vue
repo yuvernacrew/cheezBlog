@@ -1,53 +1,89 @@
 <template>
-  <ul class="p-listBar">
-    <li v-for="article in articles" :key="article.id">
-      <nuxt-link :to="{ name: 'article-id', params: { id: article.sys.id } }">
-        <div class="p-listBar__container">
-          <div class="p-listBar__thumb">
-            <img
-              v-if="article.fields.mainVisual"
-              :src="article.fields.mainVisual.fields.file.url"
-            />
-            <img
-              v-if="!article.fields.mainVisual"
-              src="~/assets/images/noimage.svg"
-            />
-          </div>
-          <div>
-            <h2 class="p-listBar__title">{{ article.fields.title }}</h2>
-            <ul v-if="article.fields.tags">
-              <li v-for="tag in article.fields.tags" :key="tag.sys.id">
-                <nuxt-link
-                  :to="{ name: 'index', query: { tagId: tag.sys.id } }"
-                >
-                  {{ tag.fields.name }}
-                </nuxt-link>
-              </li>
-            </ul>
-            <div class="p-listBar__description">
-              <p>{{ article.fields.description }}</p>
+  <div>
+    <h1 class="p-articleList__title">{{ setTitle }}</h1>
+    <ul class="p-listBar">
+      <li v-for="article in articles" :key="article.id">
+        <nuxt-link :to="{ name: 'article-id', params: { id: article.sys.id } }">
+          <div class="p-listBar__container">
+            <div class="p-listBar__thumb">
+              <img
+                v-if="article.fields.mainVisual"
+                :src="article.fields.mainVisual.fields.file.url"
+              />
+              <img
+                v-if="!article.fields.mainVisual"
+                src="~/assets/images/noimage.png"
+              />
+            </div>
+            <div>
+              <h2 class="p-listBar__title">{{ article.fields.title }}</h2>
+              <articleListTags
+                :tags="article.fields.tags"
+                v-if="article.fields.tags"
+              ></articleListTags>
+              <div class="p-listBar__description">
+                <p>{{ article.fields.description }}</p>
+              </div>
             </div>
           </div>
-        </div>
-      </nuxt-link>
-    </li>
-  </ul>
+        </nuxt-link>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
+import { mapState } from 'vuex';
+import ArticleListTags from '~/components/Molecules/ArticleListTags.vue';
+
 export default {
+  components: {
+    ArticleListTags,
+  },
   props: {
     articles: {
       type: Array,
       required: true,
     },
   },
+  computed: {
+    ...mapState(['categories', 'tags']),
+    setTitle() {
+      let categoryTitle = 'すべての記事';
+      this.categories.forEach(value => {
+        if (this.$route.query.categoryId === value.id) {
+          categoryTitle = `${value.name}の記事`;
+        }
+      });
+      this.tags.forEach(value => {
+        if (this.$route.query.tagId === value.id) {
+          categoryTitle = `${value.name}の記事`;
+        }
+      });
+      return categoryTitle;
+    },
+  },
 };
 </script>
 <style lang="scss">
+.p-articleList {
+  &__title {
+    display: flex;
+    align-items: center;
+
+    &::before {
+      width: 8px;
+      height: 8px;
+      margin: 0 10px;
+      content: '';
+      background-color: $primary-color;
+    }
+  }
+}
+
 .p-listBar {
   li {
     box-sizing: border-box;
-    padding: 10px;
+    padding: 10px 0;
     list-style-type: none;
 
     &:not(:last-child) {
@@ -61,7 +97,7 @@ export default {
       padding: 10px;
 
       &:hover {
-        background-color: $mono-light-color;
+        background-color: $mono-lighter-color;
         border-radius: 4px;
       }
     }
@@ -84,12 +120,14 @@ export default {
 
     @media (max-width: $breakpoint) {
       width: 100%;
+      margin-bottom: 10px;
     }
   }
 
   &__title {
-    margin-bottom: 4px;
+    margin-bottom: 10px;
     font-size: 18px;
+    line-height: 1.4;
     color: $mono-darker-color;
   }
 

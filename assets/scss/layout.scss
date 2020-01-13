@@ -1,23 +1,44 @@
 .l-main {
   width: 100%;
-  max-width: 960px;
   margin: 0 auto;
-  flex-grow: 1;
+  @media (max-width: 750px) {
+    box-sizing: border-box;
+    padding: 0 4%;
+  }
+  @media (min-width: 750px) {
+    max-width: 960px;
+    flex-grow: 1;
+  }
 
   &--2columns {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    @media (min-width: 750px) {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
   }
 
   &--left {
     width: 100%;
-    max-width: 700px;
+
+    @media (min-width: 750px) {
+      width: 700px;
+      margin-right: 20px;
+    }
+
+    @media (max-width: 750px) {
+      margin-bottom: 20px;
+    }
   }
 }
 
 .l-aside {
   width: 100%;
-  max-width: 235px;
-  height: auto;
+  box-sizing: border-box;
+
+  @media (min-width: 750px) {
+    width: 235px;
+    height: auto;
+    flex-shrink: 0;
+  }
 }

@@ -11,7 +11,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scope>
+<style lang="scss" scoped>
 h1 {
   position: relative;
   padding: 13px 6px 8px;
