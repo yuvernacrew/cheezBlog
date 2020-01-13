@@ -16,17 +16,18 @@ export default {
   components: {
     ArticleList,
   },
-  data() {
-    return {};
-  },
-  async asyncData({ env }) {
-    const articles = await client.getEntries({
+  async asyncData({ env, query: { categoryId, tagId } }) {
+    const articlesSearchConfig = {
       content_type: env.CTF_BLOG_POST_TYPE_ID,
       order: '-sys.createdAt',
-    });
+      'fields.tags.sys.id': tagId,
+      'fields.category.sys.id': categoryId,
+    };
+    const articles = await client.getEntries(articlesSearchConfig);
     return {
       articles,
     };
   },
+  watchQuery: true,
 };
 </script>
