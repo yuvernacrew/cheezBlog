@@ -20,7 +20,7 @@
                 <nuxt-link
                   :to="{ name: 'index', query: { tagId: tag.sys.id } }"
                 >
-                  {{ tag.fields.tag }}
+                  {{ tag.fields.name }}
                 </nuxt-link>
               </li>
             </ul>

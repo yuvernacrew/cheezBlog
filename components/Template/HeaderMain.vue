@@ -1,8 +1,30 @@
 <template>
   <header class="c-header">
-    <p>へっだー</p>
+    <ul>
+      <li v-for="category in categories" :key="category.id">
+        <nuxt-link :to="{ name: 'index', query: { categoryId: category.id } }">
+          <p>{{ category.name }}</p>
+        </nuxt-link>
+      </li>
+    </ul>
+    <ul>
+      <li v-for="tag in tags" :key="tag.id">
+        <nuxt-link :to="{ name: 'index', query: { tagId: tag.id } }">
+          <p>{{ tag.name }}</p>
+        </nuxt-link>
+      </li>
+    </ul>
   </header>
 </template>
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  computed: {
+    ...mapState(['categories', 'tags']),
+  },
+};
+</script>
 <style lang="scss" scoped>
 .c-header {
   width: 100vw;
