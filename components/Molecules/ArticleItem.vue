@@ -70,12 +70,15 @@ export default {
     margin-bottom: 12px;
 
     li {
-      display: flex;
-      align-items: center;
+      position: relative;
+      padding-left: 12px;
       font-size: 14px;
       line-height: 1.6;
 
       &::before {
+        position: absolute;
+        top: 9px;
+        left: 0;
         width: 6px;
         height: 6px;
         margin-right: 8px;
