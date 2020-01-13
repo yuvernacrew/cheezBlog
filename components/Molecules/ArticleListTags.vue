@@ -10,8 +10,8 @@
 export default {
   props: {
     tags: {
-      type: Object,
-      defauls: {},
+      type: Array,
+      defauls: [],
     },
   },
 };
