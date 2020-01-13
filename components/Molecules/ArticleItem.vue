@@ -103,6 +103,7 @@ export default {
 
   a {
     color: $accent-color;
+    word-break: break-all;
   }
 
   code {
