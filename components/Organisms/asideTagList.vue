@@ -26,7 +26,7 @@ export default {
   &__title {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 
     &::before {
       width: 8px;
