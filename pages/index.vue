@@ -1,36 +1,32 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="item in posts.items" :key="item.id">
-        <nuxt-link :to="{ name: 'article-id', params: { id: item.sys.id } }">
-          <h2>{{ item.fields.title }}</h2>
-          <div>
-            <p>{{ item.fields.description }}</p>
-          </div>
-        </nuxt-link>
-      </li>
-    </ul>
+  <div class="l-main--left">
+    <div class="c-card">
+      <ArticleList :articles="articles.items"></ArticleList>
+    </div>
   </div>
 </template>
 
 <script>
-import createClient from '@/plugins/contentful.js'
+import createClient from '@/plugins/contentful.js';
+import ArticleList from '~/components/Organisms/ArticleList.vue';
 
-const client = createClient
+const client = createClient;
 
 export default {
-  asyncData({ env }) {
-    return new Promise((resolve) => {
-      const posts = client.getEntries({
-        content_type: env.CTF_BLOG_POST_TYPE_ID,
-        order: '-sys.createdAt',
-      })
-      resolve(posts)
-    }).then((posts) => {
-      return {
-        posts,
-      }
-    })
+  components: {
+    ArticleList,
   },
-}
+  data() {
+    return {};
+  },
+  async asyncData({ env }) {
+    const articles = await client.getEntries({
+      content_type: env.CTF_BLOG_POST_TYPE_ID,
+      order: '-sys.createdAt',
+    });
+    return {
+      articles,
+    };
+  },
+};
 </script>

@@ -1,31 +1,34 @@
 <template>
-  <div class="l-main--left">
-    <div class="c-card">
-      <ArticleTitle :title="item.fields.title"></ArticleTitle>
-      <ArticleItem :article="item.fields.items"></ArticleItem>
-      <p>作成日 : {{ item.sys.createdAt }}</p>
-      <p>更新日 : {{ item.sys.updatedAt }}</p>
-      <p>タグ：{{ item.tag }}</p>
-      {{ item }}
-    </div>
-  </div>
+  <article>
+    <ArticleTitle :title="article.fields.title"></ArticleTitle>
+    <img v-if="mainVisual" :src="imageUrl" />
+    <ArticleItem :content="article.fields.content"></ArticleItem>
+    <p>作成日 : {{ article.sys.createdAt }}</p>
+    <p>更新日 : {{ article.sys.updatedAt }}</p>
+    <p>タグ：{{ article.tag }}</p>
+  </article>
 </template>
 
 <script>
-import ArticleTitle from '~/components/Molecules/ArticleTitle.vue'
-import ArticleItem from '~/components/Molecules/ArticleItem.vue'
+import ArticleTitle from '~/components/Molecules/ArticleTitle.vue';
+import ArticleItem from '~/components/Molecules/ArticleItem.vue';
 
 export default {
-  props: ['item'],
   components: {
     ArticleTitle,
     ArticleItem,
   },
-  data() {
-    return {
-      title: '',
-      article: '',
-    }
+  props: {
+    article: {
+      type: Object,
+      required: true,
+    },
   },
-}
+  computed: {
+    imageUrl() {
+      const { mainVisual } = this.article.fields;
+      return mainVisual ? mainVisual.fields.file.url : '';
+    },
+  },
+};
 </script>

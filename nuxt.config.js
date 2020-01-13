@@ -47,9 +47,15 @@ export default {
     '@nuxtjs/dotenv',
     // Doc: https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources',
+    'nuxt-webfontloader',
   ],
   styleResources: {
     scss: ['assets/scss/*.scss', 'assets/scss/**/*.scss'],
+  },
+  webfontloader: {
+    google: {
+      families: ['Noto+Sans+JP'],
+    },
   },
   /*
    ** Axios module configuration
@@ -71,4 +77,4 @@ export default {
     CTF_PERSON_ID: process.env.CTF_PERSON_ID,
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
   },
-}
+};

@@ -1,5 +1,5 @@
-import marked from 'marked'
-import hljs from 'highlightjs'
+import marked from 'marked';
+import hljs from 'highlightjs';
 // import hljsDefineVue from 'highlightjs-vue'
 
 const markedHtml = () => {
@@ -8,9 +8,9 @@ const markedHtml = () => {
     langPrefix: 'hljs ',
     highlight(code, lang) {
       // .value で ハイライトされたHTML文字列 を返す。
-      return hljs.highlightAuto(code, [lang]).value
+      return hljs.highlightAuto(code, [lang]).value;
     },
-  })
-}
+  });
+};
 
-export default markedHtml()
+export default markedHtml();

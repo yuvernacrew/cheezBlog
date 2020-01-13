@@ -1,6 +1,6 @@
 <template>
   <footer class="c-footer">
-    <p>ふったー</p>
+    <p>© 2020 CHEEZ inc.</p>
   </footer>
 </template>
 <style lang="scss" scoped>
