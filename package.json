@@ -13,7 +13,8 @@
     "lint:css": "stylelint ./components/**/*.vue ./pages/**/*.vue"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint"
+    "*.{js,vue}": "eslint",
+    "*.{vue}": "stylelint"
   },
   "husky": {
     "hooks": {
