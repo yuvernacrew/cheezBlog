@@ -1,7 +1,7 @@
 <template>
   <div class="l-main--left">
     <div class="c-card">
-      <ArticleList :articles="articles.items"></ArticleList>
+      <articleList :articles="articles.items"></articleList>
     </div>
   </div>
 </template>

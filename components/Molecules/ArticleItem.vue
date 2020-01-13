@@ -1,27 +1,26 @@
 <template>
   <div>
-    <AppEyeCatch />
     <div v-html="markedHtml" class="c-article"></div>
   </div>
 </template>
 <script>
-import marked from '~/plugins/marked.js';
-import AppEyeCatch from '~/components/Atoms/AppEyeCatch.vue';
+import initMerked from '~/plugins/marked.js';
 
 export default {
-  components: {
-    AppEyeCatch,
-  },
   props: {
     content: {
       type: String,
       required: true,
     },
   },
-  computed: {
-    markedHtml() {
-      return marked(this.content);
-    },
+  data() {
+    return {
+      markedHtml: '',
+    };
+  },
+  async created() {
+    const marked = await initMerked();
+    this.markedHtml = marked(this.content);
   },
 };
 </script>
@@ -30,19 +29,19 @@ export default {
   h2 {
     padding: 12px 16px 10px;
     margin: 40px 0 20px;
-    border-radius: 4px;
-    background-color: $primary-light-color;
     font-size: 20px;
     font-weight: bold;
+    background-color: $primary-light-color;
+    border-radius: 4px;
   }
 
   h3 {
-    border-left: 8px solid $primary-color;
-    border-bottom: 1px solid $mono-color;
     padding: 6px 16px 8px;
     margin: 32px 0 16px;
     font-size: 16px;
     font-weight: bold;
+    border-bottom: 1px solid $mono-color;
+    border-left: 8px solid $primary-color;
   }
 
   h4 {
@@ -51,18 +50,18 @@ export default {
     margin: 24px 0 12px;
 
     &::before {
-      content: '';
-      margin-right: 8px;
       width: 8px;
       height: 8px;
+      margin-right: 8px;
+      content: '';
       background-color: $primary-color;
     }
   }
 
   p {
-    font-size: 14spx;
-    line-height: 1.6;
     margin-bottom: 1em;
+    font-size: 14px;
+    line-height: 1.6;
   }
 
   ul {
@@ -75,20 +74,20 @@ export default {
       line-height: 1.6;
 
       &::before {
-        content: '';
-        margin-right: 8px;
         width: 6px;
         height: 6px;
-        border-radius: 3px;
+        margin-right: 8px;
+        content: '';
         background-color: $mono-dark-color;
+        border-radius: 3px;
       }
     }
   }
 
   blockquote {
-    border-left: 4px solid $mono-color;
     padding: 10px 18px;
     margin-bottom: 12px;
+    border-left: 4px solid $mono-color;
 
     p {
       margin-bottom: 0;
@@ -102,8 +101,8 @@ export default {
   }
 
   code {
-    font-size: 14px;
     margin-bottom: 12px;
+    font-size: 14px;
   }
 }
 </style>

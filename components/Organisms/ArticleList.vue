@@ -8,7 +8,7 @@
         />
         <img
           v-if="!article.fields.mainVisual"
-          src="//images.ctfassets.net/kaoqyn3jbwsv/iNlB1jcGfacm0miTKOvnV/0e6c4cd0e94046dbed32a2e7a109d449/20161006_noimage.svg"
+          src="~/assets/images/noimage.svg"
         />
         <h2 class="p-listBar__title">{{ article.fields.title }}</h2>
         <div class="p-listBar__description">
@@ -22,7 +22,7 @@
 export default {
   props: {
     articles: {
-      type: Object,
+      type: Array,
       required: true,
     },
   },
@@ -40,10 +40,10 @@ export default {
     }
 
     a {
-      padding: 10px;
       display: block;
       width: 100%;
       height: 100%;
+      padding: 10px;
 
       &:hover {
         background-color: $mono-light-color;
@@ -53,14 +53,14 @@ export default {
   }
 
   &__title {
-    color: $mono-darker-color;
     margin-bottom: 4px;
     font-size: 18px;
+    color: $mono-darker-color;
   }
 
   &__description {
-    color: $mono-dark-color;
     font-size: 12px;
+    color: $mono-dark-color;
   }
 }
 </style>
