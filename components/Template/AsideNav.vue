@@ -1,17 +1,17 @@
 <template>
   <aside class="l-aside">
     <asideProfile></asideProfile>
-    <asideTagList></asideTagList>
+    <asideTagsList></asideTagsList>
   </aside>
 </template>
 
 <script>
-import AsideTagList from '~/components/Organisms/AsideTagList.vue';
+import AsideTagsList from '~/components/Organisms/AsideTagsList.vue';
 import AsideProfile from '~/components/Organisms/AsideProfile.vue';
 
 export default {
   components: {
-    AsideTagList,
+    AsideTagsList,
     AsideProfile,
   },
 };
