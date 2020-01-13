@@ -23,7 +23,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['node_modules/highlightjs/styles/vs2015.css', 'assets/scss/style.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -45,7 +45,18 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+    // Doc: https://github.com/nuxt-community/style-resources-module
+    '@nuxtjs/style-resources',
+    'nuxt-webfontloader',
   ],
+  styleResources: {
+    scss: ['assets/scss/*.scss', 'assets/scss/**/*.scss'],
+  },
+  webfontloader: {
+    google: {
+      families: ['Noto+Sans+JP'],
+    },
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -66,4 +77,4 @@ export default {
     CTF_PERSON_ID: process.env.CTF_PERSON_ID,
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
   },
-}
+};

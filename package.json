@@ -1,5 +1,5 @@
 {
-  "name": "cheezBlog",
+  "name": "cheez-blog",
   "version": "1.0.0",
   "description": "",
   "author": "",
@@ -9,10 +9,12 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint:css": "stylelint ./components/**/*.vue ./pages/**/*.vue"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint"
+    "*.{js,vue}": "eslint",
+    "*.{vue}": "stylelint"
   },
   "husky": {
     "hooks": {
@@ -23,13 +25,19 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "highlightjs": "^9.16.2",
+    "highlightjs-vue": "^1.0.0",
     "marked": "^0.8.0",
-    "nuxt": "^2.0.0"
+    "node-sass": "^4.13.0",
+    "nuxt": "^2.0.0",
+    "nuxt-webfontloader": "^1.1.0",
+    "sass-loader": "^8.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
+    "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/stylelint-module": "^3.1.0",
+    "@primer/css": "^14.1.0",
     "babel-eslint": "^10.0.1",
     "contentful": "^7.11.3",
     "eslint": "^6.1.0",
@@ -39,6 +47,13 @@
     "husky": "^2.6.0",
     "lint-staged": "^8.2.1",
     "prettier": "^1.16.4",
-    "stylelint": "^10.1.0"
-  }
+    "stylelint": "^11.0.0",
+    "stylelint-config-prettier": "^8.0.0",
+    "stylelint-config-primer": "^9.0.0",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-scss": "^3.13.0"
+  },
+  "browserslist": [
+    "< 1% in JP"
+  ]
 }

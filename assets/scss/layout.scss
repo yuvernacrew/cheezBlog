@@ -1,0 +1,23 @@
+.l-main {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  flex-grow: 1;
+
+  &--2columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &--left {
+    width: 100%;
+    max-width: 700px;
+  }
+}
+
+.l-aside {
+  width: 100%;
+  max-width: 235px;
+  height: auto;
+}

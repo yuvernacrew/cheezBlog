@@ -1,0 +1,16 @@
+body {
+  font-family: 'Noto Sans JP';
+  // TODO: 変数に変更
+  background-color: #f8f8f8;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: #ea4b60;
+  text-decoration: none;
+}

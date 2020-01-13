@@ -1,48 +1,30 @@
 <template>
-  <div>
-    <h1>{{ post.fields.title }}</h1>
-    <div v-html="markedHtml"></div>
+  <div class="l-main--2columns">
+    <div class="l-main--left">
+      <div class="c-card">
+        <articleIndex :article="article"></articleIndex>
+      </div>
+    </div>
+    <asideNav></asideNav>
   </div>
 </template>
 
 <script>
-import marked from 'marked'
-import hljs from 'highlightjs'
-import { createClient } from '~/plugins/contentful.js'
+import createClient from '~/plugins/contentful.js';
+import ArticleIndex from '~/components/Organisms/ArticleIndex.vue';
+import AsideNav from '~/components/Template/AsideNav.vue';
 
-const client = createClient()
+const client = createClient;
 
 export default {
-  computed: {
-    markedHtml() {
-      return marked(this.post.fields.items)
-    },
+  components: {
+    ArticleIndex,
+    AsideNav,
   },
-  asyncData({ env, params }) {
-    return Promise.all([
-      // fetch the owner of the blog
-      client.getEntries({
-        'sys.id': env.CTF_PERSON_ID,
-      }),
-      // fetch all blog posts sorted by creation date
-      client.getEntry(params.id),
-    ]).then(([entries, post]) => {
-      // return data that should be available
-      // in the template
-      return {
-        person: entries,
-        post,
-      }
-    })
+  async asyncData({ params: { id } }) {
+    return {
+      article: await client.getEntry(id),
+    };
   },
-  created() {
-    // markedでhighlightjsを利用するように設定
-    marked.setOptions({
-      langPrefix: '',
-      highlight(code, lang) {
-        return hljs.highlightAuto(code, [lang]).value
-      },
-    })
-  },
-}
+};
 </script>

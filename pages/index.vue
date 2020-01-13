@@ -1,43 +1,33 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="item in posts.items" :key="item.id">
-        <nuxt-link :to="{ name: 'article-id', params: { id: item.sys.id } }">
-          <h2>{{ item.fields.title }}</h2>
-          <div>
-            <p>{{ item.fields.description }}</p>
-          </div>
-        </nuxt-link>
-      </li>
-    </ul>
+  <div class="l-main--left">
+    <div class="c-card">
+      <articleList :articles="articles.items"></articleList>
+    </div>
   </div>
 </template>
 
 <script>
-import { createClient } from '~/plugins/contentful.js'
+import createClient from '@/plugins/contentful.js';
+import ArticleList from '~/components/Organisms/ArticleList.vue';
 
-const client = createClient()
+const client = createClient;
 
 export default {
-  asyncData({ env }) {
-    return Promise.all([
-      // fetch the owner of the blog
-      client.getEntries({
-        'sys.id': env.CTF_PERSON_ID,
-      }),
-      // fetch all blog posts sorted by creation date
-      client.getEntries({
-        content_type: env.CTF_BLOG_POST_TYPE_ID,
-        order: '-sys.createdAt',
-      }),
-    ]).then(([entries, posts]) => {
-      // return data that should be available
-      // in the template
-      return {
-        person: entries,
-        posts,
-      }
-    })
+  components: {
+    ArticleList,
   },
-}
+  async asyncData({ env, query: { categoryId, tagId } }) {
+    const articlesSearchConfig = {
+      content_type: env.CTF_BLOG_POST_TYPE_ID,
+      order: '-sys.createdAt',
+      'fields.tags.sys.id': tagId,
+      'fields.category.sys.id': categoryId,
+    };
+    const articles = await client.getEntries(articlesSearchConfig);
+    return {
+      articles,
+    };
+  },
+  watchQuery: true,
+};
 </script>
