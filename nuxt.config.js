@@ -53,11 +53,6 @@ export default {
   styleResources: {
     scss: ['assets/scss/*.scss', 'assets/scss/**/*.scss'],
   },
-  webfontloader: {
-    google: {
-      families: ['Noto+Sans+JP', 'Signika'],
-    },
-  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
