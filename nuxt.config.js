@@ -23,7 +23,10 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['node_modules/highlightjs/styles/vs2015.css', 'assets/scss/style.scss'],
+  css: [
+    'node_modules/highlightjs/styles/zenburn.css',
+    'assets/scss/style.scss',
+  ],
   /*
    ** Plugins to load before mounting the App
    */
