@@ -14,7 +14,7 @@ export default {
 <style lang="scss" scoped>
 h1 {
   position: relative;
-  padding: 13px 6px 8px;
+  padding: 12px 6px 16px;
   margin-bottom: 20px;
   font-size: 24px;
   font-weight: 700;

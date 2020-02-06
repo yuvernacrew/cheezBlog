@@ -27,7 +27,7 @@ export default {
 <style lang="scss">
 .c-article {
   h2 {
-    padding: 12px 16px 10px;
+    padding: 12px 14px 10px;
     margin: 40px 0 20px;
     font-size: 20px;
     font-weight: bold;
@@ -38,8 +38,8 @@ export default {
 
   h3 {
     padding: 6px 16px 8px;
-    margin: 32px 0 16px;
-    font-size: 16px;
+    margin: 40px 0 16px;
+    font-size: 18px;
     font-weight: bold;
     line-height: 1.4;
     border-bottom: 1px solid $mono-color;
@@ -52,8 +52,8 @@ export default {
     margin: 24px 0 12px;
 
     &::before {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       margin-right: 8px;
       content: '';
       background-color: $primary-color;
@@ -61,27 +61,27 @@ export default {
   }
 
   p {
-    margin-bottom: 1em;
+    margin-bottom: 16px;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 2;
   }
 
-  ul {
-    margin-bottom: 12px;
+  > ul {
+    margin-bottom: 16px;
 
     li {
       position: relative;
-      padding-left: 12px;
+      padding-left: 14px;
       font-size: 14px;
-      line-height: 1.6;
+      line-height: 2;
 
       &::before {
         position: absolute;
-        top: 9px;
+        top: 12px;
         left: 0;
         width: 6px;
         height: 6px;
-        margin-right: 8px;
+        margin-right: 10px;
         content: '';
         background-color: $mono-dark-color;
         border-radius: 3px;
@@ -109,11 +109,11 @@ export default {
   code {
     &:not(.hljs) {
       display: inline-block;
-      padding: 2px;
+      padding: 0 4px;
+      margin: 0 2px;
       font-size: 14px;
-      line-height: 1.4;
-      background-color: $mono-light-color;
-      border-radius: 4px;
+      line-height: 20px;
+      background-color: #f2f2f2;
     }
   }
 
