@@ -35,7 +35,6 @@ export default {
 
   &__title {
     margin-bottom: 12px;
-    font-family: 'Signika';
     font-size: 32px;
   }
 
