@@ -52,6 +52,7 @@ export default {
     '@nuxtjs/style-resources',
     'nuxt-webfontloader',
     'nuxt-fontawesome',
+    '@nuxtjs/moment',
   ],
   styleResources: {
     scss: ['assets/scss/*.scss', 'assets/scss/**/*.scss'],
@@ -81,6 +82,9 @@ export default {
         icons: ['fab'],
       },
     ],
+  },
+  moment: {
+    locales: ['ja'],
   },
   env: {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,

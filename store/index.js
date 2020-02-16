@@ -60,7 +60,7 @@ export const actions = {
     const { items } = await client.getEntries(config);
     const latestArticles = items.map(({ fields, sys }) => ({
       id: sys.id,
-      name: fields.title,
+      title: fields.title,
       createdAt: sys.createdAt,
     }));
     commit('SET_LATEST_ARTICLES', latestArticles);
