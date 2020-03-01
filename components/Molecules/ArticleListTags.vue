@@ -18,7 +18,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .p-tagList {
-  margin-bottom: 12px;
+  margin-top: 16px;
 
   &__item {
     display: inline-block;
@@ -26,7 +26,7 @@ export default {
     margin: 0 8px 0 0;
     font-size: 12px;
     color: $mono-darker-color;
-    background-color: $mono-color;
+    background-color: $mono-light-color;
     border-radius: 20px;
   }
 
