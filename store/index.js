@@ -1,5 +1,5 @@
-import createClient from '@/plugins/contentful.js';
-const client = createClient;
+import { createClient } from '@/plugins/contentful.js';
+const client = createClient();
 
 export const state = () => ({
   categories: [{ id: '', name: '' }],

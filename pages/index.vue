@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import createClient from '@/plugins/contentful.js';
+import { createClient } from '@/plugins/contentful.js';
 import ArticleList from '~/components/Organisms/ArticleList.vue';
 import AsideNav from '~/components/Template/AsideNav.vue';
 
-const client = createClient;
+const client = createClient();
 
 export default {
   components: {
