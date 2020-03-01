@@ -23,6 +23,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .p-asideTag {
+  margin-bottom: 20px;
+
   &__title {
     display: flex;
     align-items: center;
