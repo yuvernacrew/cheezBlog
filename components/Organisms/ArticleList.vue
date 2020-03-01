@@ -81,6 +81,12 @@ export default {
       content: '';
       background-color: $primary-color;
     }
+
+    @media (max-width: $breakpoint) {
+      &::before {
+        margin: 0 10px 0 0;
+      }
+    }
   }
 }
 
@@ -93,13 +99,15 @@ export default {
     &:not(:last-child) {
       border-bottom: 1px solid $mono-color;
     }
+
+    @media (max-width: $breakpoint) {
+      padding: 16px 0;
+    }
   }
 
   &__container {
-    @media (min-width: $breakpoint) {
-      display: flex;
-      justify-content: space-between;
-    }
+    display: flex;
+    justify-content: space-between;
   }
 
   &__thumb {
@@ -114,8 +122,15 @@ export default {
     }
 
     @media (max-width: $breakpoint) {
-      width: 100%;
-      margin-bottom: 10px;
+      width: 50px;
+      margin-left: 10px;
+
+      img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
     }
   }
 
