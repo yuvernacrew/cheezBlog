@@ -1,3 +1,13 @@
+const { getConfigForKeys } = require('./lib/config.js');
+const ctfConfig = getConfigForKeys([
+  'CTF_BLOG_POST_TYPE_ID',
+  'CTF_SPACE_ID',
+  'CTF_CDA_ACCESS_TOKEN',
+]);
+
+const { createClient } = require('./plugins/contentful');
+const client = createClient(ctfConfig);
+
 export default {
   mode: 'universal',
   /*
@@ -70,6 +80,15 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
+  },
+  generate: {
+    routes() {
+      return client
+        .getEntries(process.env.CTF_BLOG_POST_TYPE_ID)
+        .then(entries => {
+          return [...entries.items.map(entry => `/article/${entry.sys.id}`)];
+        });
+    },
   },
   fontawesome: {
     imports: [
