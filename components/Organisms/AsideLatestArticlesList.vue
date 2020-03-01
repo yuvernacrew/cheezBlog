@@ -48,9 +48,10 @@ export default {
 
   &__list {
     li {
-      padding: 12px 0;
+      padding-bottom: 12px;
 
       &:not(:last-child) {
+        margin-bottom: 12px;
         border-bottom: 1px solid $mono-color;
       }
     }
