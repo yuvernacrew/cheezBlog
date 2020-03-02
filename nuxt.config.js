@@ -86,7 +86,14 @@ export default {
       return client
         .getEntries(process.env.CTF_BLOG_POST_TYPE_ID)
         .then(entries => {
-          return [...entries.items.map(entry => `/article/${entry.sys.id}`)];
+          return [
+            ...entries.items.map(entry => {
+              return {
+                route: `/article/${entry.sys.id}`,
+                payload: entry,
+              };
+            }),
+          ];
         });
     },
   },

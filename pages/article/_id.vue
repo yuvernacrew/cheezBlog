@@ -21,10 +21,9 @@ export default {
     ArticleIndex,
     AsideNav,
   },
-  async asyncData({ params: { id } }) {
-    return {
-      article: await client.getEntry(id),
-    };
+  async asyncData({ params: { id }, payload }) {
+    if (payload) return { article: payload };
+    else return { article: await client.getEntry(id) };
   },
 };
 </script>
