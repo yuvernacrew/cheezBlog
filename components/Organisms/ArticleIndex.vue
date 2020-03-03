@@ -1,7 +1,7 @@
 <template>
   <article>
     <ArticleTitle :title="article.fields.title"></ArticleTitle>
-    <img v-if="mainVisual" :src="imageUrl" />
+    <img v-if="imageUrlFlag" :src="imageUrl" />
     <ArticleItem :content="article.fields.content"></ArticleItem>
   </article>
 </template>
@@ -25,6 +25,10 @@ export default {
     imageUrl() {
       const { mainVisual } = this.article.fields;
       return mainVisual ? mainVisual.fields.file.url : '';
+    },
+    imageUrlFlag() {
+      const { mainVisual } = this.article.fields;
+      return mainVisual;
     },
   },
 };
