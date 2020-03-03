@@ -96,7 +96,7 @@ export default {
 
     p {
       margin-bottom: 0;
-      font-size: 12px;
+      font-size: 14px;
       color: $mono-dark-color;
     }
   }
