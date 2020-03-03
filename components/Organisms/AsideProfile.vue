@@ -11,18 +11,24 @@
     <ul class="p-profile__snsList">
       <li class="p-profile__snsList--insta">
         <a
+          href="https://www.instagram.com/yuverna_cheez/"
+          target="_blank"
+          rel="noopener"
           ><font-awesome-icon
             class="p-profile__icon"
             :icon="['fab', 'instagram']"
         /></a>
       </li>
       <li class="p-profile__snsList--twitter">
-        <a
+        <a href="https://twitter.com/____cheez" target="_blank" rel="noopener"
           ><font-awesome-icon class="p-profile__icon" :icon="['fab', 'twitter']"
         /></a>
       </li>
       <li class="p-profile__snsList--fb">
         <a
+          href="https://www.facebook.com/cheez921"
+          target="_blank"
+          rel="noopener"
           ><font-awesome-icon
             class="p-profile__icon"
             :icon="['fab', 'facebook-f']"
@@ -57,6 +63,7 @@
   &__description {
     margin-bottom: 20px;
     font-size: 12px;
+    line-height: 1.4;
     color: $mono-dark-color;
   }
 
