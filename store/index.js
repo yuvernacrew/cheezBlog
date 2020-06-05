@@ -17,6 +17,15 @@ export const state = () => ({
 });
 
 /**
+ * getter
+ */
+export const getters = {
+  articleItem: state => id => {
+    return state.articles.find(article => article.id === id);
+  },
+};
+
+/**
  * mutations
  */
 export const mutations = {

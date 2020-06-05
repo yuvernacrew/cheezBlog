@@ -11,7 +11,7 @@
             </p>
             <h2>
               <nuxt-link
-                :to="{ name: 'article-id', params: { id: articles.id } }"
+                :to="{ name: 'article-id', params: { id: article.id } }"
                 class="p-listBar__title"
                 >{{ article.fields.title }}
               </nuxt-link>

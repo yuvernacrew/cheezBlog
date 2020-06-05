@@ -2,7 +2,7 @@
   <div class="l-main--2columns">
     <div class="l-main--left">
       <div class="c-card">
-        <articleIndex :article="article"></articleIndex>
+        <articleIndex :article="articleItem(paramsId)"></articleIndex>
       </div>
     </div>
     <asideNav></asideNav>
@@ -10,20 +10,22 @@
 </template>
 
 <script>
-import { createClient } from '~/plugins/contentful.js';
+import { mapGetters } from 'vuex';
 import ArticleIndex from '~/components/Organisms/ArticleIndex.vue';
 import AsideNav from '~/components/Template/AsideNav.vue';
-
-const client = createClient();
 
 export default {
   components: {
     ArticleIndex,
     AsideNav,
   },
-  async asyncData({ params: { id }, payload }) {
-    if (payload) return { article: payload };
-    else return { article: await client.getEntry(id) };
+  computed: {
+    ...mapGetters(['articleItem']),
+  },
+  asyncData({ params: { id } }) {
+    return {
+      paramsId: id,
+    };
   },
 };
 </script>
