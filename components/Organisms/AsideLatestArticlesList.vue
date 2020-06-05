@@ -2,7 +2,7 @@
   <div class="c-card p-asideLatestArticles">
     <p class="p-asideLatestArticles__title">新着記事一覧</p>
     <ul class="p-asideLatestArticles__list">
-      <li v-for="latestArticle in latestArticles" :key="latestArticle.id">
+      <li v-for="latestArticle in articles" :key="latestArticle.id">
         <p class="p-asideLatestArticles__date">
           <font-awesome-icon icon="calendar-alt" />
           {{ $moment(latestArticle.createdAt).format('YYYY.MM.DD') }}
@@ -11,18 +11,19 @@
           :to="{ name: 'article-id', params: { id: latestArticle.id } }"
           class="p-asideLatestArticles__anchor"
         >
-          <p>{{ latestArticle.title }}</p>
+          <p>{{ latestArticle.fields.title }}</p>
         </nuxt-link>
       </li>
     </ul>
   </div>
 </template>
 <script>
+/* TODO: 親からpropsで渡すよう変更 */
 import { mapState } from 'vuex';
 
 export default {
   computed: {
-    ...mapState(['latestArticles']),
+    ...mapState(['articles']),
   },
 };
 </script>

@@ -13,6 +13,7 @@
   </div>
 </template>
 <script>
+/* TODO: 親からpropsで渡すよう変更 */
 import { mapState } from 'vuex';
 
 export default {
