@@ -7,7 +7,13 @@ const client = createClient();
 export const state = () => ({
   categories: [{ id: '', name: '' }],
   tags: [{ id: '', name: '' }],
-  articles: [{ id: '', name: '', createdAt: '' }],
+  articles: [
+    {
+      id: '',
+      fields: [],
+      createdAt: '',
+    },
+  ],
 });
 
 /**
@@ -68,7 +74,7 @@ export const actions = {
     const { items } = await client.getEntries(config);
     const latestArticles = items.map(({ fields, sys }) => ({
       id: sys.id,
-      title: fields.title,
+      fields,
       createdAt: sys.createdAt,
     }));
     commit('SET_ARTICLES', latestArticles);
