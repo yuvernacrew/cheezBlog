@@ -22,6 +22,12 @@ export default {
   computed: {
     ...mapState(['articles']),
   },
+  head() {
+    return {
+      titleTemplate: null,
+      title: 'cheezBlog',
+    };
+  },
 
   watchQuery: true,
 };

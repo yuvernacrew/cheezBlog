@@ -15,13 +15,13 @@
           target="_blank"
           rel="noopener"
           ><font-awesome-icon
-            class="p-profile__icon"
             :icon="['fab', 'instagram']"
+            class="p-profile__icon"
         /></a>
       </li>
       <li class="p-profile__snsList--twitter">
         <a href="https://twitter.com/____cheez" target="_blank" rel="noopener"
-          ><font-awesome-icon class="p-profile__icon" :icon="['fab', 'twitter']"
+          ><font-awesome-icon :icon="['fab', 'twitter']" class="p-profile__icon"
         /></a>
       </li>
       <li class="p-profile__snsList--fb">
@@ -30,8 +30,8 @@
           target="_blank"
           rel="noopener"
           ><font-awesome-icon
-            class="p-profile__icon"
             :icon="['fab', 'facebook-f']"
+            class="p-profile__icon"
         /></a>
       </li>
     </ul>

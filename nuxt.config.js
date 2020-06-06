@@ -1,11 +1,11 @@
-const { getConfigForKeys } = require('./lib/config.js');
+import { getConfigForKeys } from './lib/config.js';
+
+import { createClient } from './plugins/contentful.js';
 const ctfConfig = getConfigForKeys([
   'CTF_BLOG_POST_TYPE_ID',
   'CTF_SPACE_ID',
   'CTF_CDA_ACCESS_TOKEN',
 ]);
-
-const { createClient } = require('./plugins/contentful');
 const client = createClient(ctfConfig);
 
 export default {
@@ -14,14 +14,26 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s - cheezBlog',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'ちーずのぶろぐ。' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'cheezBlog' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
       {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || '',
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://cheezblog.netlify.com/',
+      },
+      { hid: 'og:title', property: 'og:title', content: 'cheezBlog' },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'ちーずのぶろぐ。',
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: '/icon-128x128.png',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
