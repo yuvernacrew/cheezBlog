@@ -7,11 +7,11 @@
           <div>
             <p class="p-listBar__date">
               <font-awesome-icon icon="calendar-alt" />
-              {{ $moment(article.sys.createdAt).format('YYYY.MM.DD') }}
+              {{ $moment(article.createdAt).format('YYYY.MM.DD') }}
             </p>
             <h2>
               <nuxt-link
-                :to="{ name: 'article-id', params: { id: article.sys.id } }"
+                :to="{ name: 'article-id', params: { id: article.id } }"
                 class="p-listBar__title"
                 >{{ article.fields.title }}
               </nuxt-link>
@@ -36,6 +36,7 @@
   </div>
 </template>
 <script>
+/* TODO: 親からpropsで渡すよう変更 */
 import { mapState } from 'vuex';
 import ArticleListTags from '~/components/Molecules/ArticleListTags.vue';
 

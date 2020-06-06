@@ -1,12 +1,33 @@
 import { createClient } from '@/plugins/contentful.js';
 const client = createClient();
 
+/**
+ * state
+ */
 export const state = () => ({
   categories: [{ id: '', name: '' }],
   tags: [{ id: '', name: '' }],
-  latestArticles: [{ id: '', name: '', createdAt: '' }],
+  articles: [
+    {
+      id: '',
+      fields: [],
+      createdAt: '',
+    },
+  ],
 });
 
+/**
+ * getter
+ */
+export const getters = {
+  articleItem: state => id => {
+    return state.articles.find(article => article.id === id);
+  },
+};
+
+/**
+ * mutations
+ */
 export const mutations = {
   SET_CATEGORIES(state, categories) {
     state.categories = categories;
@@ -14,17 +35,20 @@ export const mutations = {
   SET_TAGS(state, tags) {
     state.tags = tags;
   },
-  SET_LATEST_ARTICLES(state, latestArticles) {
-    state.latestArticles = latestArticles;
+  SET_ARTICLES(state, articles) {
+    state.articles = articles;
   },
 };
 
+/**
+ * actions
+ */
 export const actions = {
   async nuxtServerInit({ dispatch }) {
     // アクションを呼び出す関数
     await dispatch('getCategories');
     await dispatch('getTags');
-    await dispatch('getLatestArticles');
+    await dispatch('getArticles');
   },
 
   async getCategories({ commit }) {
@@ -51,18 +75,17 @@ export const actions = {
     }));
     commit('SET_TAGS', tags);
   },
-  async getLatestArticles({ commit }) {
+  async getArticles({ commit }) {
     const config = {
       content_type: 'cheezBlog',
       order: '-sys.createdAt',
-      limit: 5,
     };
     const { items } = await client.getEntries(config);
     const latestArticles = items.map(({ fields, sys }) => ({
       id: sys.id,
-      title: fields.title,
+      fields,
       createdAt: sys.createdAt,
     }));
-    commit('SET_LATEST_ARTICLES', latestArticles);
+    commit('SET_ARTICLES', latestArticles);
   },
 };
