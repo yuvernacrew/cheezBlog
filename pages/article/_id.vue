@@ -49,6 +49,10 @@ export default {
           content: `https://cheezblog.netlify.com${this.$route.path}`,
         },
         { hid: 'og:image', property: 'og:image', content: this.ogpImage },
+        { property: 'article:publisher', content: 'FacebookURL' },
+        { property: 'fb:app_id', content: 'FacebookAppID' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@Twitter' },
       ],
     };
   },
