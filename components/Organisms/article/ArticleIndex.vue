@@ -1,8 +1,8 @@
 <template>
   <article>
-    <appArticleTitle :title="article.fields.title"></appArticleTitle>
+    <app-article-title :title="article.fields.title"></app-article-title>
     <img v-if="imageUrlFlag" :src="imageUrl" />
-    <articleContent :content="article.fields.content"></articleContent>
+    <article-content :content="article.fields.content"></article-content>
   </article>
 </template>
 

@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
-    <headerMain></headerMain>
+    <header-main></header-main>
     <main class="l-main">
       <nuxt />
     </main>
-    <footerMain></footerMain>
+    <footer-main></footer-main>
   </div>
 </template>
 <script>

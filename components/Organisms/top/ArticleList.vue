@@ -22,10 +22,10 @@
             >
               {{ article.fields.description }}
             </div>
-            <articleListTags
+            <article-list-tags
               v-if="article.fields.tags"
               :tags="article.fields.tags"
-            ></articleListTags>
+            ></article-list-tags>
           </div>
           <div v-if="article.fields.mainVisual" class="p-listBar__thumb">
             <img :src="article.fields.mainVisual.fields.file.url" />

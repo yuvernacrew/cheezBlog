@@ -2,10 +2,10 @@
   <div class="l-main--2columns">
     <div class="l-main--left">
       <div class="c-card">
-        <articleIndex :article="article"></articleIndex>
+        <article-index :article="article"></article-index>
       </div>
     </div>
-    <articleSideBar></articleSideBar>
+    <article-sideBar></article-sideBar>
   </div>
 </template>
 

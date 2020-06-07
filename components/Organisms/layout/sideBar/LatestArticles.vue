@@ -1,6 +1,6 @@
 <template>
   <div class="c-card p-asideLatestArticles">
-    <appCardTitle title="新着記事一覧"></appCardTitle>
+    <app-card-title title="新着記事一覧"></app-card-title>
     <ul class="p-asideLatestArticles__list">
       <li v-for="latestArticle in articles" :key="latestArticle.id">
         <p class="p-asideLatestArticles__date">

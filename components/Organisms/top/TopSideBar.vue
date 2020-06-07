@@ -1,8 +1,8 @@
 <template>
   <aside class="l-aside">
     <profile></profile>
-    <tagsList></tagsList>
-    <latestArticlesList></latestArticlesList>
+    <tags-list></tags-list>
+    <latest-articles-list></latest-articles-list>
   </aside>
 </template>
 
