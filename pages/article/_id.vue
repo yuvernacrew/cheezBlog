@@ -15,6 +15,7 @@ import ArticleIndex from '~/components/Organisms/ArticleIndex.vue';
 import AsideNav from '~/components/Template/AsideNav.vue';
 
 export default {
+  layout: 'article',
   components: {
     ArticleIndex,
     AsideNav,

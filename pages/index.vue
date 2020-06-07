@@ -15,6 +15,7 @@ import ArticleList from '~/components/Organisms/ArticleList.vue';
 import AsideNav from '~/components/Template/AsideNav.vue';
 
 export default {
+  layout: 'top',
   components: {
     ArticleList,
     AsideNav,
@@ -28,7 +29,6 @@ export default {
       title: 'cheezBlog',
     };
   },
-
   watchQuery: true,
 };
 </script>
