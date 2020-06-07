@@ -11,7 +11,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { createClient } from '~/plugins/contentful.js';
+import createClient from '~/plugins/contentful';
 import ArticleIndex from '~/components/Organisms/ArticleIndex.vue';
 import AsideNav from '~/components/Template/AsideNav.vue';
 
@@ -71,7 +71,7 @@ export default {
   },
   async asyncData({ params: { id }, payload }) {
     if (payload) return { article: payload };
-    else return { article: await client.getEntry(id) };
+    return { article: await client.getEntry(id) };
   },
 };
 </script>

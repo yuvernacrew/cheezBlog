@@ -11,7 +11,7 @@ export default {
   props: {
     tags: {
       type: Array,
-      defauls: [],
+      default: () => [],
     },
   },
 };

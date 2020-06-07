@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div v-html="markedHtml" class="c-article"></div>
+    <div class="c-article" v-html="markedHtml"></div>
   </div>
 </template>
 <script>
-import initMerked from '~/plugins/marked.js';
+import initMerked from '~/plugins/marked';
 
 export default {
   props: {

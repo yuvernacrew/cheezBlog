@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"optionalDependencies": false}] */
 import * as contentful from 'contentful';
 
 // contentfulの設定
@@ -8,7 +9,7 @@ const defaultConfig = {
 };
 
 // contentfulの設定を返す
-export const createClient = (config = defaultConfig) => {
+export default (config = defaultConfig) => {
   return contentful.createClient({
     space: config.CTF_SPACE_ID,
     accessToken: config.CTF_CDA_ACCESS_TOKEN,

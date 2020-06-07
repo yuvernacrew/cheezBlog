@@ -1,4 +1,8 @@
-import { createClient } from '@/plugins/contentful.js';
+/* eslint no-shadow: ["error", { "allow": ["state"] }] */
+/* eslint-disable no-param-reassign */
+
+import createClient from '@/plugins/contentful';
+
 const client = createClient();
 
 /**
