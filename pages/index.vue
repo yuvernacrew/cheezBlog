@@ -5,20 +5,20 @@
         <articleList :articles="articles"></articleList>
       </div>
     </div>
-    <asideNav></asideNav>
+    <topSideBar></topSideBar>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import ArticleList from '~/components/Organisms/ArticleList.vue';
-import AsideNav from '~/components/Template/AsideNav.vue';
+import TopSideBar from '~/components/Organisms/top/TopSideBar.vue';
 
 export default {
   layout: 'top',
   components: {
     ArticleList,
-    AsideNav,
+    TopSideBar,
   },
   computed: {
     ...mapState(['articles']),

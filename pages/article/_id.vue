@@ -5,7 +5,7 @@
         <articleIndex :article="article"></articleIndex>
       </div>
     </div>
-    <asideNav></asideNav>
+    <articleSideBar></articleSideBar>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import { mapGetters } from 'vuex';
 import createClient from '~/plugins/contentful';
 import cloudinary from '~/plugins/cloudinary';
 import ArticleIndex from '~/components/Organisms/ArticleIndex.vue';
-import AsideNav from '~/components/Template/AsideNav.vue';
+import ArticleSideBar from '~/components/Organisms/article/ArticleSideBar.vue';
 
 const client = createClient();
 
@@ -22,7 +22,38 @@ export default {
   layout: 'article',
   components: {
     ArticleIndex,
-    AsideNav,
+    ArticleSideBar,
+  },
+  async asyncData({ params: { id }, payload }) {
+    if (payload) return { article: payload };
+    return { article: await client.getEntry(id) };
+  },
+  computed: {
+    /* TODO: payload問題が解消できたら、this.articleをthis.articleContentに変更 */
+    ...mapGetters(['articleItem']),
+    articleContent() {
+      return this.articleItem(this.$route.params.id);
+    },
+    ogpImage() {
+      const ogpText = this.article.fields.title || 'cheezBlog';
+      const encodeText = encodeURI(ogpText);
+      return cloudinary.url('ogp.png', {
+        version: '1591455615',
+        transformation: [
+          {
+            overlay: {
+              font_family: 'notosansjp-bold.otf',
+              font_size: 40,
+              text_align: 'center',
+              text: encodeText,
+            },
+            width: '600',
+            color: '#333',
+            crop: 'fit',
+          },
+        ],
+      });
+    },
   },
   head() {
     return {
@@ -58,37 +89,6 @@ export default {
         { name: 'twitter:site', content: '@Twitter' },
       ],
     };
-  },
-  computed: {
-    /* TODO: payload問題が解消できたら、this.articleをthis.articleContentに変更 */
-    ...mapGetters(['articleItem']),
-    articleContent() {
-      return this.articleItem(this.$route.params.id);
-    },
-    ogpImage() {
-      const ogpText = this.article.fields.title || 'cheezBlog';
-      const encodeText = encodeURI(ogpText);
-      return cloudinary.url('ogp.png', {
-        version: '1591455615',
-        transformation: [
-          {
-            overlay: {
-              font_family: 'notosansjp-bold.otf',
-              font_size: 40,
-              text_align: 'center',
-              text: encodeText,
-            },
-            width: '600',
-            color: '#333',
-            crop: 'fit',
-          },
-        ],
-      });
-    },
-  },
-  async asyncData({ params: { id }, payload }) {
-    if (payload) return { article: payload };
-    return { article: await client.getEntry(id) };
   },
 };
 </script>

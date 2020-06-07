@@ -124,5 +124,9 @@ export default {
     font-size: 14px;
     line-height: 1.4;
   }
+
+  img {
+    width: 100%;
+  }
 }
 </style>

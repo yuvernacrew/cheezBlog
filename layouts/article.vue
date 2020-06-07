@@ -8,8 +8,8 @@
   </div>
 </template>
 <script>
-import HeaderMain from '~/components/Template/HeaderMain.vue';
-import FooterMain from '~/components/Template/FooterMain.vue';
+import HeaderMain from '~/components/Organisms/layout/HeaderMain.vue';
+import FooterMain from '~/components/Organisms/layout/FooterMain.vue';
 
 export default {
   components: {
