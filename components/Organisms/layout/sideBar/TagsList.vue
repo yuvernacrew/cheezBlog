@@ -1,12 +1,10 @@
 <template>
   <div class="c-card p-asideTag">
-    <p class="p-asideTag__title">タグ一覧</p>
+    <app-card-title title="タグ一覧"></app-card-title>
     <ul>
       <li v-for="tag in tags" :key="tag.id" class="p-asideTag__item">
         <nuxt-link :to="{ name: 'index', query: { tagId: tag.id } }">
-          <font-awesome-icon icon="tag" class="p-asideTag__icon" />{{
-            tag.name
-          }}
+          <app-tag :name="tag.name"></app-tag>
         </nuxt-link>
       </li>
     </ul>
@@ -15,8 +13,14 @@
 <script>
 /* TODO: 親からpropsで渡すよう変更 */
 import { mapState } from 'vuex';
+import AppTag from '~/components/Atoms/AppTag.vue';
+import AppCardTitle from '~/components/Atoms/AppCardTitle.vue';
 
 export default {
+  components: {
+    AppCardTitle,
+    AppTag,
+  },
   computed: {
     ...mapState(['tags']),
   },
@@ -26,38 +30,9 @@ export default {
 .p-asideTag {
   margin-bottom: 20px;
 
-  &__title {
-    display: flex;
-    align-items: center;
-    margin-bottom: 14px;
-
-    &::before {
-      width: 8px;
-      height: 8px;
-      margin-right: 10px;
-      content: '';
-      background-color: $primary-color;
-    }
-  }
-
   &__item {
     display: inline-block;
-    padding: 4px 12px;
     margin: 0 8px 10px 0;
-    font-size: 12px;
-    background-color: $mono-light-color;
-    border-radius: 20px;
-
-    a {
-      display: block;
-      width: 100%;
-      color: $mono-darker-color;
-    }
-  }
-
-  &__icon {
-    margin-right: 4px;
-    font-size: 12px;
   }
 }
 </style>

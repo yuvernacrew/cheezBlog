@@ -1,19 +1,19 @@
 <template>
   <article>
-    <ArticleTitle :title="article.fields.title"></ArticleTitle>
+    <appArticleTitle :title="article.fields.title"></appArticleTitle>
     <img v-if="imageUrlFlag" :src="imageUrl" />
-    <ArticleItem :content="article.fields.content"></ArticleItem>
+    <articleContent :content="article.fields.content"></articleContent>
   </article>
 </template>
 
 <script>
-import ArticleTitle from '~/components/Molecules/ArticleTitle.vue';
-import ArticleItem from '~/components/Molecules/ArticleItem.vue';
+import AppArticleTitle from '~/components/Molecules/AppArticleTitle.vue';
+import ArticleContent from '~/components/Organisms/article/ArticleContent.vue';
 
 export default {
   components: {
-    ArticleTitle,
-    ArticleItem,
+    AppArticleTitle,
+    ArticleContent,
   },
   props: {
     article: {
