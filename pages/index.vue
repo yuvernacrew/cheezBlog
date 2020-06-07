@@ -2,7 +2,7 @@
   <div class="l-main--2columns">
     <div class="l-main--left">
       <app-card>
-        <article-list :articles="articles"></article-list>
+        <articleList :articles="articleItems"></articleList>
       </app-card>
     </div>
     <top-side-bar></top-side-bar>
@@ -24,6 +24,21 @@ export default {
   },
   computed: {
     ...mapState(['articles']),
+    searchTag() {
+      return this.articles.filter(article => {
+        const tagIDs = article.fields.tags
+          ? article.fields.tags.map(tag => tag.sys.id)
+          : '';
+        if (tagIDs === '') return '';
+        return tagIDs.some(tagID => {
+          return tagID === this.$route.query.tagId;
+        });
+      });
+    },
+    articleItems() {
+      if (this.$route.query.tagId) return this.searchTag;
+      return this.articles;
+    },
   },
   head() {
     return {
