@@ -1,5 +1,5 @@
 <template>
-  <div class="c-card p-profile">
+  <app-card add-class="p-profile">
     <div class="p-profile__thumb">
       <img src="~/assets/images/kamasan.png" />
     </div>
@@ -35,8 +35,17 @@
         /></a>
       </li>
     </ul>
-  </div>
+  </app-card>
 </template>
+<script>
+import AppCard from '~/components/Atoms/AppCard.vue';
+
+export default {
+  components: {
+    AppCard,
+  },
+};
+</script>
 <style lang="scss" scoped>
 .p-profile {
   margin-bottom: 20px;

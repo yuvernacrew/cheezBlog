@@ -1,9 +1,9 @@
 <template>
   <div class="l-main--2columns">
     <div class="l-main--left">
-      <div class="c-card">
+      <app-card>
         <article-list :articles="articles"></article-list>
-      </div>
+      </app-card>
     </div>
     <top-side-bar></top-side-bar>
   </div>
@@ -13,12 +13,14 @@
 import { mapState } from 'vuex';
 import ArticleList from '~/components/Organisms/top/ArticleList.vue';
 import TopSideBar from '~/components/Organisms/top/TopSideBar.vue';
+import AppCard from '~/components/Atoms/AppCard.vue';
 
 export default {
   layout: 'top',
   components: {
     ArticleList,
     TopSideBar,
+    AppCard,
   },
   computed: {
     ...mapState(['articles']),

@@ -1,5 +1,5 @@
 <template>
-  <div class="c-card p-asideTag">
+  <app-card add-class="p-asideTag">
     <app-card-title title="タグ一覧"></app-card-title>
     <ul>
       <li v-for="tag in tags" :key="tag.id" class="p-asideTag__item">
@@ -8,18 +8,20 @@
         </nuxt-link>
       </li>
     </ul>
-  </div>
+  </app-card>
 </template>
 <script>
 /* TODO: 親からpropsで渡すよう変更 */
 import { mapState } from 'vuex';
 import AppTag from '~/components/Atoms/AppTag.vue';
+import AppCard from '~/components/Atoms/AppCard.vue';
 import AppCardTitle from '~/components/Atoms/AppCardTitle.vue';
 
 export default {
   components: {
     AppCardTitle,
     AppTag,
+    AppCard,
   },
   computed: {
     ...mapState(['tags']),

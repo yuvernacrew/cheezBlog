@@ -1,9 +1,9 @@
 <template>
   <div class="l-main--2columns">
     <div class="l-main--left">
-      <div class="c-card">
+      <app-card>
         <article-index :article="article"></article-index>
-      </div>
+      </app-card>
     </div>
     <article-sideBar></article-sideBar>
   </div>
@@ -15,6 +15,7 @@ import createClient from '~/plugins/contentful';
 import cloudinary from '~/plugins/cloudinary';
 import ArticleIndex from '~/components/Organisms/article/ArticleIndex.vue';
 import ArticleSideBar from '~/components/Organisms/article/ArticleSideBar.vue';
+import AppCard from '~/components/Atoms/AppCard.vue';
 
 const client = createClient();
 
@@ -23,6 +24,7 @@ export default {
   components: {
     ArticleIndex,
     ArticleSideBar,
+    AppCard,
   },
   async asyncData({ params: { id }, payload }) {
     if (payload) return { article: payload };
