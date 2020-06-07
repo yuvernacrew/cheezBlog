@@ -12,6 +12,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import createClient from '~/plugins/contentful';
+import cloudinary from '~/plugins/cloudinary';
 import ArticleIndex from '~/components/Organisms/ArticleIndex.vue';
 import AsideNav from '~/components/Template/AsideNav.vue';
 
@@ -66,7 +67,23 @@ export default {
     },
     ogpImage() {
       const ogpText = this.article.fields.title || 'cheezBlog';
-      return `https://res.cloudinary.com/cheezblog/image/upload/l_text:notosansjp-bold.otf_40_bold:${ogpText},co_rgb:333,w_580,c_fit/v1591455615/ogp_dibxqg.png`;
+      const encodeText = encodeURI(ogpText);
+      return cloudinary.url('ogp.png', {
+        version: '1591455615',
+        transformation: [
+          {
+            overlay: {
+              font_family: 'notosansjp-bold.otf',
+              font_size: 40,
+              text_align: 'center',
+              text: encodeText,
+            },
+            width: '600',
+            color: '#333',
+            crop: 'fit',
+          },
+        ],
+      });
     },
   },
   async asyncData({ params: { id }, payload }) {
