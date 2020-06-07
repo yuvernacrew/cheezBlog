@@ -28,6 +28,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/moment": "^1.6.0",
+    "cloudinary-core": "^2.8.2",
     "dotenv": "^8.2.0",
     "highlightjs": "^9.16.2",
     "highlightjs-vue": "^1.0.0",
