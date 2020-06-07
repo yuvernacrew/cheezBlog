@@ -2,7 +2,7 @@
   <div class="l-main--2columns">
     <div class="l-main--left">
       <div class="c-card">
-        <articleIndex :article="articleContent"></articleIndex>
+        <articleIndex :article="article"></articleIndex>
       </div>
     </div>
     <asideNav></asideNav>
@@ -11,11 +11,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
-// import { createClient } from '~/plugins/contentful.js';
+import { createClient } from '~/plugins/contentful.js';
 import ArticleIndex from '~/components/Organisms/ArticleIndex.vue';
 import AsideNav from '~/components/Template/AsideNav.vue';
 
-// const client = createClient();
+const client = createClient();
 
 export default {
   layout: 'article',
@@ -25,27 +25,25 @@ export default {
   },
   head() {
     return {
-      title: this.articleContent.fields.title || 'cheezBlogの記事ページ',
+      title: this.article.fields.title || 'cheezBlogの記事ページ',
       meta: [
         {
           hid: 'description',
           name: 'description',
           content:
-            this.articleContent.fields.description ||
-            'cheezBlogの記事ページです。',
+            this.article.fields.description || 'cheezBlogの記事ページです。',
         },
         { hid: 'og:type', property: 'og:type', content: 'article' },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: this.articleContent.fields.title || 'cheezBlogの記事ページ',
+          content: this.article.fields.title || 'cheezBlogの記事ページ',
         },
         {
           hid: 'og:description',
           property: 'og:description',
           content:
-            this.articleContent.fields.description ||
-            'cheezBlogの記事ページです。',
+            this.article.fields.description || 'cheezBlogの記事ページです。',
         },
         {
           hid: 'og:url',
@@ -67,9 +65,13 @@ export default {
       return this.articleItem(this.$route.params.id);
     },
     ogpImage() {
-      const ogpText = this.articleContent.fields.title || 'cheezBlog';
+      const ogpText = this.article.fields.title || 'cheezBlog';
       return `https://res.cloudinary.com/cheezblog/image/upload/l_text:notosansjp-bold.otf_40_bold:${ogpText},co_rgb:333,w_580,c_fit/v1591455615/ogp_dibxqg.png`;
     },
+  },
+  async asyncData({ params: { id }, payload }) {
+    if (payload) return { article: payload };
+    else return { article: await client.getEntry(id) };
   },
 };
 </script>
