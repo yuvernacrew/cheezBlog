@@ -1,6 +1,6 @@
-import { getConfigForKeys } from './lib/config.js';
+import getConfigForKeys from './lib/config';
+import createClient from './plugins/contentful';
 
-import { createClient } from './plugins/contentful.js';
 const ctfConfig = getConfigForKeys([
   'CTF_BLOG_POST_TYPE_ID',
   'CTF_SPACE_ID',
@@ -93,7 +93,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {},
   },
   generate: {
     routes() {

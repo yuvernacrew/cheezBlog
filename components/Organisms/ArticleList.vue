@@ -23,8 +23,8 @@
               {{ article.fields.description }}
             </div>
             <articleListTags
-              :tags="article.fields.tags"
               v-if="article.fields.tags"
+              :tags="article.fields.tags"
             ></articleListTags>
           </div>
           <div v-if="article.fields.mainVisual" class="p-listBar__thumb">
@@ -38,7 +38,7 @@
 <script>
 /* TODO: 親からpropsで渡すよう変更 */
 import { mapState } from 'vuex';
-import ArticleListTags from '~/components/Molecules/ArticleListTags.vue';
+import ArticleListTags from '@/components/Molecules/ArticleListTags.vue';
 
 export default {
   components: {
