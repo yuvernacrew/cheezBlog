@@ -1,6 +1,6 @@
 <template>
-  <div class="c-card p-asideLatestArticles">
-    <p class="p-asideLatestArticles__title">新着記事一覧</p>
+  <app-card add-class="p-asideLatestArticles">
+    <app-card-title title="新着記事一覧"></app-card-title>
     <ul class="p-asideLatestArticles__list">
       <li v-for="latestArticle in articles" :key="latestArticle.id">
         <p class="p-asideLatestArticles__date">
@@ -15,13 +15,19 @@
         </nuxt-link>
       </li>
     </ul>
-  </div>
+  </app-card>
 </template>
 <script>
 /* TODO: 親からpropsで渡すよう変更 */
 import { mapState } from 'vuex';
+import AppCardTitle from '~/components/Atoms/AppCardTitle.vue';
+import AppCard from '~/components/Atoms/AppCard.vue';
 
 export default {
+  components: {
+    AppCardTitle,
+    AppCard,
+  },
   computed: {
     ...mapState(['articles']),
   },
@@ -31,21 +37,6 @@ export default {
 // TODO: 別途対応でFLOCSSでまとめる
 .p-asideLatestArticles {
   margin-bottom: 20px;
-
-  // TODO: titleはatom化
-  &__title {
-    display: flex;
-    align-items: center;
-    margin-bottom: 14px;
-
-    &::before {
-      width: 8px;
-      height: 8px;
-      margin-right: 10px;
-      content: '';
-      background-color: $primary-color;
-    }
-  }
 
   &__list {
     li {

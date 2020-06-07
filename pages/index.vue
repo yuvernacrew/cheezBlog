@@ -1,24 +1,26 @@
 <template>
   <div class="l-main--2columns">
     <div class="l-main--left">
-      <div class="c-card">
+      <app-card>
         <articleList :articles="articleItems"></articleList>
-      </div>
+      </app-card>
     </div>
-    <asideNav></asideNav>
+    <top-side-bar></top-side-bar>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import ArticleList from '~/components/Organisms/ArticleList.vue';
-import AsideNav from '~/components/Template/AsideNav.vue';
+import ArticleList from '~/components/Organisms/top/ArticleList.vue';
+import TopSideBar from '~/components/Organisms/top/TopSideBar.vue';
+import AppCard from '~/components/Atoms/AppCard.vue';
 
 export default {
   layout: 'top',
   components: {
     ArticleList,
-    AsideNav,
+    TopSideBar,
+    AppCard,
   },
   computed: {
     ...mapState(['articles']),

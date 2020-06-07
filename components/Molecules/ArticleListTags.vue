@@ -1,13 +1,19 @@
 <template>
   <ul class="p-tagList">
     <li v-for="tag in tags" :key="tag.sys.id" class="p-tagList__item">
-      <span><font-awesome-icon icon="tag" class="p-tagList__icon"/></span>
-      {{ tag.fields.name }}
+      <nuxt-link :to="{ name: 'index', query: { tagId: tag.sys.id } }">
+        <app-tag :name="tag.fields.name"></app-tag>
+      </nuxt-link>
     </li>
   </ul>
 </template>
 <script>
+import AppTag from '~/components/Atoms/AppTag.vue';
+
 export default {
+  components: {
+    AppTag,
+  },
   props: {
     tags: {
       type: Array,
@@ -22,17 +28,7 @@ export default {
 
   &__item {
     display: inline-block;
-    padding: 4px 12px;
     margin: 0 8px 0 0;
-    font-size: 12px;
-    color: $mono-darker-color;
-    background-color: $mono-light-color;
-    border-radius: 20px;
-  }
-
-  &__icon {
-    margin-right: 4px;
-    font-size: 12px;
   }
 }
 </style>
