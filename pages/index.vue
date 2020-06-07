@@ -11,7 +11,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import ArticleList from '~/components/Organisms/ArticleList.vue';
+import ArticleList from '~/components/Organisms/top/ArticleList.vue';
 import TopSideBar from '~/components/Organisms/top/TopSideBar.vue';
 
 export default {

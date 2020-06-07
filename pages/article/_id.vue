@@ -13,7 +13,7 @@
 import { mapGetters } from 'vuex';
 import createClient from '~/plugins/contentful';
 import cloudinary from '~/plugins/cloudinary';
-import ArticleIndex from '~/components/Organisms/ArticleIndex.vue';
+import ArticleIndex from '~/components/Organisms/article/ArticleIndex.vue';
 import ArticleSideBar from '~/components/Organisms/article/ArticleSideBar.vue';
 
 const client = createClient();
