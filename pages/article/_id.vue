@@ -59,6 +59,7 @@ export default {
     };
   },
   computed: {
+    /* TODO: payload問題が解消できたら、this.articleをthis.articleContentに変更 */
     ...mapGetters(['articleItem']),
     articleContent() {
       return this.articleItem(this.$route.params.id);
