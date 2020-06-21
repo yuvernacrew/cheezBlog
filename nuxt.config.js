@@ -10,7 +10,9 @@ const client = createClient(ctfConfig);
 
 export default {
   mode: 'universal',
-  target: 'static',
+  /* TODO
+   ** target: 'static',
+   */
   /*
    ** Headers of the page
    */
