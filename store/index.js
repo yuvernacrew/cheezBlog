@@ -14,7 +14,7 @@ export const state = () => ({
   articles: [
     {
       id: '',
-      fields: [],
+      fields: {},
       createdAt: '',
     },
   ],
@@ -26,6 +26,20 @@ export const state = () => ({
 export const getters = {
   articleItem: state => id => {
     return state.articles.find(article => article.id === id);
+  },
+  articleList: state => {
+    return state.articles.map(item => {
+      return {
+        id: item.id,
+        fields: {
+          title: item.fields.title,
+          tags: item.fields.tags,
+          category: item.fields.category,
+          description: item.fields.description,
+        },
+        createdAt: item.createdAt,
+      };
+    });
   },
 };
 
@@ -85,11 +99,11 @@ export const actions = {
       order: '-sys.createdAt',
     };
     const { items } = await client.getEntries(config);
-    const latestArticles = items.map(({ fields, sys }) => ({
+    const articles = items.map(({ fields, sys }) => ({
       id: sys.id,
       fields,
       createdAt: sys.createdAt,
     }));
-    commit('SET_ARTICLES', latestArticles);
+    commit('SET_ARTICLES', articles);
   },
 };
