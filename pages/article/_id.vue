@@ -2,7 +2,7 @@
   <div class="l-main--2columns">
     <div class="l-main--left">
       <app-card>
-        <article-index :article="article"></article-index>
+        <article-index :article="articleContent"></article-index>
       </app-card>
     </div>
     <article-sideBar></article-sideBar>
@@ -10,14 +10,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import createClient from '~/plugins/contentful';
 import cloudinary from '~/plugins/cloudinary';
 import ArticleIndex from '~/components/Organisms/article/ArticleIndex.vue';
 import ArticleSideBar from '~/components/Organisms/article/ArticleSideBar.vue';
 import AppCard from '~/components/Atoms/AppCard.vue';
-
-const client = createClient();
 
 export default {
   layout: 'article',
@@ -26,18 +22,14 @@ export default {
     ArticleSideBar,
     AppCard,
   },
-  async asyncData({ params: { id }, payload }) {
-    if (payload) return { article: payload };
-    return { article: await client.getEntry(id) };
+  async asyncData({ params: { id }, payload, store }) {
+    const articleContent =
+      payload || store.state.articles.find(article => article.id === id);
+    return { articleContent };
   },
   computed: {
-    /* TODO: payload問題が解消できたら、this.articleをthis.articleContentに変更 */
-    ...mapGetters(['articleItem']),
-    articleContent() {
-      return this.articleItem(this.$route.params.id);
-    },
     ogpImage() {
-      const ogpText = this.article.fields.title || 'cheezBlog';
+      const ogpText = this.articleContent.fields.title || 'cheezBlog';
       const encodeText = encodeURI(ogpText);
       return cloudinary.url('ogp.png', {
         version: '1591455615',
@@ -59,25 +51,27 @@ export default {
   },
   head() {
     return {
-      title: this.article.fields.title || 'cheezBlogの記事ページ',
+      title: this.articleContent.fields.title || 'cheezBlogの記事ページ',
       meta: [
         {
           hid: 'description',
           name: 'description',
           content:
-            this.article.fields.description || 'cheezBlogの記事ページです。',
+            this.articleContent.fields.description ||
+            'cheezBlogの記事ページです。',
         },
         { hid: 'og:type', property: 'og:type', content: 'article' },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: this.article.fields.title || 'cheezBlogの記事ページ',
+          content: this.articleContent.fields.title || 'cheezBlogの記事ページ',
         },
         {
           hid: 'og:description',
           property: 'og:description',
           content:
-            this.article.fields.description || 'cheezBlogの記事ページです。',
+            this.articleContent.fields.description ||
+            'cheezBlogの記事ページです。',
         },
         {
           hid: 'og:url',
