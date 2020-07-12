@@ -97,6 +97,9 @@ export default {
      ** You can extend webpack config here
      */
   },
+  router: {
+    middleware: ['getContentful'],
+  },
   generate: {
     routes() {
       return client

@@ -9,24 +9,15 @@ const client = createClient();
  * state
  */
 export const state = () => ({
-  categories: [{ id: '', name: '' }],
-  tags: [{ id: '', name: '' }],
-  articles: [
-    {
-      id: '',
-      fields: {},
-      createdAt: '',
-    },
-  ],
+  categories: [],
+  tags: [],
+  articles: [],
 });
 
 /**
  * getter
  */
 export const getters = {
-  articleItem: state => id => {
-    return state.articles.find(article => article.id === id);
-  },
   articleList: state => {
     return state.articles.map(item => {
       return {
@@ -62,13 +53,6 @@ export const mutations = {
  * actions
  */
 export const actions = {
-  async nuxtServerInit({ dispatch }) {
-    // アクションを呼び出す関数
-    await dispatch('getCategories');
-    await dispatch('getTags');
-    await dispatch('getArticles');
-  },
-
   async getCategories({ commit }) {
     const config = {
       content_type: 'category',
