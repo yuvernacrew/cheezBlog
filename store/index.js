@@ -123,7 +123,9 @@ export const actions = {
     commit('SET_ARTICLES', articles);
   },
   async getQiitaArticles({ commit }) {
-    const qiitaArticles = await this.$axios.$get('/users/cheez921/items');
+    const qiitaArticles = await this.$axios.$get(
+      'https://qiita.com/api/v2/users/cheez921/items'
+    );
     commit('SET_QIITA_ARTICLES', qiitaArticles);
   },
 };

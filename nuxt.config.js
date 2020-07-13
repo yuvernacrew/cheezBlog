@@ -90,15 +90,7 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {
-    prefix: '/qiita',
-  },
-  proxy: {
-    '/qiita': {
-      target: 'https://qiita.com/api/v2/',
-      pathRewrite: { '^/qiita': '/' },
-    },
-  },
+  axios: {},
   /*
    ** Build configuration
    */
