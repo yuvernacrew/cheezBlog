@@ -1,18 +1,24 @@
 <template>
-  <app-card add-class="p-asideLatestArticles">
-    <app-card-title title="新着記事一覧"></app-card-title>
-    <ul class="p-asideLatestArticles__list">
-      <li v-for="latestArticle in latestArticles" :key="latestArticle.id">
-        <p class="p-asideLatestArticles__date">
+  <app-card add-class="p-asideQiitaArticles">
+    <app-card-title title="Qiita投稿記事一覧"></app-card-title>
+    <ul class="p-asideQiitaArticles__list">
+      <li v-for="article in qiitaArticles" :key="article.id">
+        <p class="p-asideQiitaArticles__date">
           <font-awesome-icon icon="calendar-alt" />
-          {{ $moment(latestArticle.createdAt).format('YYYY.MM.DD') }}
+          {{ $moment(article.createdAt).format('YYYY.MM.DD') }}
         </p>
-        <nuxt-link
-          :to="{ name: 'article-id', params: { id: latestArticle.id } }"
-          class="p-asideLatestArticles__anchor"
+        <a
+          :href="article.url"
+          target="_blank"
+          class="p-asideQiitaArticles__anchor"
         >
-          <p>{{ latestArticle.fields.title }}</p>
-        </nuxt-link>
+          <p>
+            {{ article.title }}
+            <span class="p-asideQiitaArticles__icon--externalLink"
+              ><font-awesome-icon icon="external-link-alt"
+            /></span>
+          </p>
+        </a>
       </li>
     </ul>
   </app-card>
@@ -29,13 +35,13 @@ export default {
     AppCard,
   },
   computed: {
-    ...mapGetters(['latestArticles']),
+    ...mapGetters(['qiitaArticles']),
   },
 };
 </script>
 <style lang="scss" scoped>
 // TODO: 別途対応でFLOCSSでまとめる
-.p-asideLatestArticles {
+.p-asideQiitaArticles {
   margin-bottom: 20px;
 
   &__list {
@@ -51,7 +57,7 @@ export default {
 
   &__date {
     margin-bottom: 6px;
-    font-size: 14px;
+    font-size: 12px;
     color: $mono-dark-color;
   }
 
@@ -62,6 +68,12 @@ export default {
 
     &:hover {
       color: $accent-color;
+    }
+  }
+
+  &__icon {
+    &--externalLink {
+      font-size: 0.8em;
     }
   }
 }

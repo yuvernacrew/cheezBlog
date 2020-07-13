@@ -12,6 +12,7 @@ export const state = () => ({
   categories: [],
   tags: [],
   articles: [],
+  qiitaArticles: [],
 });
 
 /**
@@ -32,6 +33,34 @@ export const getters = {
       };
     });
   },
+  latestArticles: state => {
+    return state.articles
+      .map(item => {
+        return {
+          id: item.id,
+          fields: {
+            title: item.fields.title,
+            tags: item.fields.tags,
+            category: item.fields.category,
+            description: item.fields.description,
+          },
+          createdAt: item.createdAt,
+        };
+      })
+      .slice(0, 5);
+  },
+  qiitaArticles: state => {
+    return state.qiitaArticles
+      .map(item => {
+        return {
+          id: item.id,
+          title: item.title,
+          url: item.url,
+          createdAt: item.created_at,
+        };
+      })
+      .slice(0, 5);
+  },
 };
 
 /**
@@ -46,6 +75,9 @@ export const mutations = {
   },
   SET_ARTICLES(state, articles) {
     state.articles = articles;
+  },
+  SET_QIITA_ARTICLES(state, qiitaArticles) {
+    state.qiitaArticles = qiitaArticles;
   },
 };
 
@@ -89,5 +121,9 @@ export const actions = {
       createdAt: sys.createdAt,
     }));
     commit('SET_ARTICLES', articles);
+  },
+  async getQiitaArticles({ commit }) {
+    const qiitaArticles = await this.$axios.$get('/users/cheez921/items');
+    commit('SET_QIITA_ARTICLES', qiitaArticles);
   },
 };

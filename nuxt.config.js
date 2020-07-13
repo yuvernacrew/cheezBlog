@@ -73,6 +73,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    // Doc: https://github.com/nuxt-community/proxy-module
+    '@nuxtjs/proxy',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     // Doc: https://github.com/nuxt-community/style-resources-module
@@ -88,7 +90,15 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    prefix: '/qiita',
+  },
+  proxy: {
+    '/qiita': {
+      target: 'https://qiita.com/api/v2/',
+      pathRewrite: { '^/qiita': '/' },
+    },
+  },
   /*
    ** Build configuration
    */
@@ -98,7 +108,7 @@ export default {
      */
   },
   router: {
-    middleware: ['getContentful'],
+    middleware: ['getStore'],
     scrollBehavior() {
       return { x: 0, y: 0 };
     },
