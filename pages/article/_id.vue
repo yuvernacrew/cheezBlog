@@ -11,6 +11,7 @@
 
 <script>
 import cloudinary from '~/plugins/cloudinary';
+import loading from '~/mixin/loading';
 import ArticleIndex from '~/components/Organisms/article/ArticleIndex.vue';
 import ArticleSideBar from '~/components/Organisms/article/ArticleSideBar.vue';
 import AppCard from '~/components/Atoms/AppCard.vue';
@@ -22,6 +23,7 @@ export default {
     ArticleSideBar,
     AppCard,
   },
+  mixins: [loading],
   async asyncData({ params: { id }, payload, store }) {
     const articleContent =
       payload || store.state.articles.find(article => article.id === id);
