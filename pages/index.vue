@@ -11,6 +11,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import loading from '~/mixin/loading';
 import ArticleList from '~/components/Organisms/top/ArticleList.vue';
 import TopSideBar from '~/components/Organisms/top/TopSideBar.vue';
 import AppCard from '~/components/Atoms/AppCard.vue';
@@ -22,6 +23,7 @@ export default {
     TopSideBar,
     AppCard,
   },
+  mixins: [loading],
   computed: {
     ...mapState(['articles']),
     searchTag() {
