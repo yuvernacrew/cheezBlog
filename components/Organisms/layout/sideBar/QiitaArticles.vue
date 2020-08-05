@@ -5,7 +5,7 @@
       <li v-for="article in qiitaArticles" :key="article.id">
         <p class="p-asideQiitaArticles__date">
           <font-awesome-icon icon="calendar-alt" />
-          {{ $moment(article.createdAt).format('YYYY.MM.DD') }}
+          {{ $dayjs(article.createdAt).format('YYYY.MM.DD') }}
         </p>
         <a
           :href="article.url"
