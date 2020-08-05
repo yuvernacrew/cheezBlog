@@ -7,7 +7,7 @@
           <div>
             <p class="p-listBar__date">
               <font-awesome-icon icon="calendar-alt" />
-              {{ $moment(article.createdAt).format('YYYY.MM.DD') }}
+              {{ $dayjs(article.createdAt).format('YYYY.MM.DD') }}
             </p>
             <h2>
               <nuxt-link
