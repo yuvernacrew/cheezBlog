@@ -5,7 +5,7 @@
       <li v-for="latestArticle in latestArticles" :key="latestArticle.id">
         <p class="p-asideLatestArticles__date">
           <font-awesome-icon icon="calendar-alt" />
-          {{ $moment(latestArticle.createdAt).format('YYYY.MM.DD') }}
+          {{ $dayjs(latestArticle.createdAt).format('YYYY.MM.DD') }}
         </p>
         <nuxt-link
           :to="{ name: 'article-id', params: { id: latestArticle.id } }"
