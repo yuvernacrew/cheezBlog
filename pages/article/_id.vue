@@ -31,8 +31,8 @@ export default {
     ogpImage() {
       const ogpText = this.articleContent.fields.title || 'cheezBlog';
       const encodeText = encodeURI(ogpText);
-      return cloudinary.url('ogp.png', {
-        version: '1591455615',
+      return cloudinary.url('ogp_ut3n8b.png', {
+        version: '1598892930',
         transformation: [
           {
             overlay: {
