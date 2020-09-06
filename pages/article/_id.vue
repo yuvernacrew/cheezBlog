@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import cloudinary from '~/plugins/cloudinary';
+import generateArticleOgp from '~/plugins/generateArticleOgp';
 import ArticleIndex from '~/components/Organisms/article/ArticleIndex.vue';
 import ArticleSideBar from '~/components/Organisms/article/ArticleSideBar.vue';
 import AppCard from '~/components/Atoms/AppCard.vue';
@@ -30,23 +30,7 @@ export default {
   computed: {
     ogpImage() {
       const ogpText = this.articleContent.fields.title || 'cheezBlog';
-      const encodeText = encodeURI(ogpText);
-      return cloudinary.url('ogp_ut3n8b.png', {
-        version: '1598892930',
-        transformation: [
-          {
-            overlay: {
-              font_family: 'notosansjp-bold.otf',
-              font_size: 40,
-              text_align: 'center',
-              text: encodeText,
-            },
-            width: '600',
-            color: '#333',
-            crop: 'fit',
-          },
-        ],
-      });
+      return generateArticleOgp(ogpText);
     },
   },
   head() {
